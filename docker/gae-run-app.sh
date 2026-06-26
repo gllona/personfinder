@@ -2,22 +2,23 @@
 
 PORT=8000
 HOST_PORT=8001
-API_PORT=49532
-
-IP_ADDR=`ip addr list eth0 | grep 'inet ' | cut -d' ' -f6 | cut -d'/' -f1`
+API_PORT=8002
 
 DATA_DIR=${PERSONFINDER_DIR}data
+mkdir -p ${DATA_DIR}
 
 cd ${PERSONFINDER_DIR}
 echo "Starting Person Finder server"
 dev_appserver.py app \
-  --host ${IP_ADDR} \
+  --host 0.0.0.0 \
   --port ${PORT} \
-  --admin_host=${IP_ADDR} \
+  --admin_host=0.0.0.0 \
   --admin_port=${HOST_PORT} \
-  --api_host=${IP_ADDR} \
+  --api_host=0.0.0.0 \
   --api_port=${API_PORT} \
   --datastore_path=${DATA_DIR}/datastore.db \
   --blobstore_path=${DATA_DIR}/blobstore \
+  --support_datastore_emulator=False \
+  --enable_host_checking=false \
   --skip_sdk_update_check
 echo "Person Finder server stopped"

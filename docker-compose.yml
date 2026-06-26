@@ -5,10 +5,13 @@ services:
   web:
     build: .
     ports:
-      - "8000:8000"
-      - "8001:8001"
-      - "49532:8002"
+      - "7777:8000"
+      - "7779:8001"
     volumes:
       - .:/opt/personfinder
+      - vendors:/opt/personfinder/app/vendors
 
     command: docker/gae-run-app.sh
+
+volumes:
+  vendors:
