@@ -12,4 +12,4 @@ tests/server_test_cases/.cache/
 env/
 venv/
 /data/
-/local/
+
