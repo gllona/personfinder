@@ -11,3 +11,5 @@ tests/server_test_cases/.cache/
 .vscode/
 env/
 venv/
+/data/
+/local/

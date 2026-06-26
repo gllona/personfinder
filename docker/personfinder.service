@@ -1,0 +1,14 @@
+[Unit]
+Description=Person Finder
+After=docker.service
+Requires=docker.service
+
+[Service]
+WorkingDirectory=/opt/personfinder
+ExecStart=/usr/bin/docker-compose up
+ExecStop=/usr/bin/docker-compose down
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
