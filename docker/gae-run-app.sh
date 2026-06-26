@@ -8,6 +8,13 @@ DATA_DIR=${PERSONFINDER_DIR}data
 mkdir -p ${DATA_DIR}
 
 cd ${PERSONFINDER_DIR}
+
+echo "Compiling translation files..."
+find app/locale -name "django.po" | while read po; do
+    msgfmt -o "${po%.po}.mo" "$po"
+done
+echo "Translation files compiled."
+
 echo "Starting Person Finder server"
 dev_appserver.py app \
   --host 0.0.0.0 \
